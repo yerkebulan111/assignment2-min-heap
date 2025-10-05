@@ -21,22 +21,23 @@ public class BenchmarkRunner {
         PerformanceTracker tracker = new PerformanceTracker();
 
         System.out.println("=== MinHeapSort Benchmark Runner ===");
-//        System.out.print("Enter input sizes (comma separated, e.g. 100,1000,10000): ");
-//        String input = scanner.nextLine().trim();
-//
-//        String[] tokens = input.split(",");
-//        for (String token : tokens) {
-//            try {
-//                int size = Integer.parseInt(token.trim());
-//                runBenchmark(size, tracker);
-//            } catch (NumberFormatException e) {
-//                System.err.println("Invalid input size: " + token);
-//            }
-//        }
+        System.out.print("Enter input sizes (comma separated, e.g. 100,1000,10000): ");
+        String input = scanner.nextLine().trim();
 
-        for(int i = 2; i <= 5; i++) {
-            runBenchmark((int) Math.pow(10, i), tracker);
+        String[] tokens = input.split(",");
+        for (String token : tokens) {
+            try {
+                int size = Integer.parseInt(token.trim());
+                runBenchmark(size, tracker);
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid input size: " + token);
+            }
         }
+
+        // without input 10^2 --> 10^5
+//        for(int i = 2; i <= 5; i++) {
+//            runBenchmark((int) Math.pow(10, i), tracker);
+//        }
 
         System.out.println("\nBenchmarking complete. Results saved to " + CSV_PATH);
     }

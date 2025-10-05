@@ -2,6 +2,7 @@ package com.company.metrics;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Locale;
 
 /**
  * Tracks algorithm performance metrics such as comparisons,
@@ -61,7 +62,7 @@ public class PerformanceTracker {
             file.getParentFile().mkdirs(); // ensures the directory exists
 
             try (FileWriter writer = new FileWriter(file, true)) {
-                writer.append(String.format("%s,%d,%d,%d,%d,%d,%.3f%n",
+                writer.append(String.format(Locale.US,"%s,%d,%d,%d,%d,%d,%.3f%n",
                         algorithmName, inputSize, comparisons, swaps, arrayAccesses,
                         memoryAllocations, getExecutionTimeMs()));
             }
