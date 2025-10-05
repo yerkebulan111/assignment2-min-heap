@@ -9,7 +9,7 @@ public class MinHeapSort {
             heapify(arr, n, i);
         }
 
-
+        // extract elements from heap one by one
         for (int i = n - 1; i >= 0; i--) {
             int temp = arr[0];
             arr[0] = arr[i];
@@ -40,7 +40,7 @@ public class MinHeapSort {
             arr[i] = arr[smallest];
             arr[smallest] = temp;
 
-
+            // heapify the affected subtree
             heapify(arr, n, smallest);
         }
     }
