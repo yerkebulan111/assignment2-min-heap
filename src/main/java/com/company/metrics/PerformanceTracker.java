@@ -54,13 +54,30 @@ public class PerformanceTracker {
      * @param algorithmName name of algorithm being tested
      * @param inputSize size of input array
      */
+
     public void exportToCSV(String filePath, String algorithmName, int inputSize) {
-        try (FileWriter writer = new FileWriter(filePath, true)) {
-            writer.append(String.format("%s,%d,%d,%d,%d,%d,%.3f%n",
-                    algorithmName, inputSize, comparisons, swaps, arrayAccesses,
-                    memoryAllocations, getExecutionTimeMs()));
+        try {
+            java.io.File file = new java.io.File(filePath);
+            file.getParentFile().mkdirs(); // ensures the directory exists
+
+            try (FileWriter writer = new FileWriter(file, true)) {
+                writer.append(String.format("%s,%d,%d,%d,%d,%d,%.3f%n",
+                        algorithmName, inputSize, comparisons, swaps, arrayAccesses,
+                        memoryAllocations, getExecutionTimeMs()));
+            }
         } catch (IOException e) {
             System.err.println("Error writing performance data to CSV: " + e.getMessage());
         }
     }
+
+
+//    public void exportToCSV(String filePath, String algorithmName, int inputSize) {
+//        try (FileWriter writer = new FileWriter(filePath, true)) {
+//            writer.append(String.format("%s,%d,%d,%d,%d,%d,%.3f%n",
+//                    algorithmName, inputSize, comparisons, swaps, arrayAccesses,
+//                    memoryAllocations, getExecutionTimeMs()));
+//        } catch (IOException e) {
+//            System.err.println("Error writing performance data to CSV: " + e.getMessage());
+//        }
+//    }
 }
