@@ -1,5 +1,5 @@
 AlgorithmName,inputSize,comparisons,swaps,arrayAccesses,memoryAllocation,executionTimeMs
-MinHeapSort,100,0,0,0,0,1.160
-MinHeapSort,1000,0,0,0,0,0.385
-MinHeapSort,10000,0,0,0,0,2.793
-MinHeapSort,100000,0,0,0,0,21.187
+MinHeapSort,100,1086,619,5149,1,1.180
+MinHeapSort,1000,16904,9121,79741,1,0.897
+MinHeapSort,10000,235489,124171,1096665,1,5.948
+MinHeapSort,100000,3020184,1575421,13967322,1,23.403

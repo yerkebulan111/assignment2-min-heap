@@ -34,7 +34,7 @@ public class BenchmarkRunner {
             }
         }
 
-        // without input 10^2 --> 10^5
+        /** without input: 10^2 --> 10^5 */
 //        for(int i = 2; i <= 5; i++) {
 //            runBenchmark((int) Math.pow(10, i), tracker);
 //        }
@@ -48,7 +48,7 @@ public class BenchmarkRunner {
         tracker.reset();
         tracker.start();
 
-        MinHeapSort.sort(arr);
+        MinHeapSort.sort(arr, tracker);
 
         tracker.stop();
         tracker.exportToCSV(CSV_PATH, "MinHeapSort", n);

@@ -1,5 +1,6 @@
 package com.company.algorithms;
 
+import com.company.metrics.PerformanceTracker;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,63 +9,69 @@ public class MinHeapSortTest {
     @Test
     void testNormalCase() {
         int[] arr = {5, 3, 8, 4, 1};
-        MinHeapSort.sort(arr);
-        int[] expected = {8, 5, 4, 3, 1}; // descending order
-        assertArrayEquals(expected, arr, "Normal case should sort array in descending order");
+        PerformanceTracker tracker = new PerformanceTracker();
+        MinHeapSort.sort(arr, tracker);
+        int[] expected = {8, 5, 4, 3, 1};
+        assertArrayEquals(expected, arr);
     }
 
     @Test
     void testAlreadySortedDescending() {
         int[] arr = {9, 7, 5, 3, 1};
-        MinHeapSort.sort(arr);
+        PerformanceTracker tracker = new PerformanceTracker();
+        MinHeapSort.sort(arr, tracker);
         int[] expected = {9, 7, 5, 3, 1};
-        assertArrayEquals(expected, arr, "Already descending array should remain unchanged");
+        assertArrayEquals(expected, arr);
     }
 
     @Test
     void testAlreadySortedAscending() {
         int[] arr = {1, 2, 3, 4, 5};
-        MinHeapSort.sort(arr);
+        PerformanceTracker tracker = new PerformanceTracker();
+        MinHeapSort.sort(arr, tracker);
         int[] expected = {5, 4, 3, 2, 1};
-        assertArrayEquals(expected, arr, "Ascending array should become descending");
+        assertArrayEquals(expected, arr);
     }
 
     @Test
     void testWithDuplicates() {
         int[] arr = {4, 1, 3, 4, 1};
-        MinHeapSort.sort(arr);
+        PerformanceTracker tracker = new PerformanceTracker();
+        MinHeapSort.sort(arr, tracker);
         int[] expected = {4, 4, 3, 1, 1};
-        assertArrayEquals(expected, arr, "Duplicates should be handled correctly");
+        assertArrayEquals(expected, arr);
     }
 
     @Test
     void testSingleElement() {
         int[] arr = {42};
-        MinHeapSort.sort(arr);
+        PerformanceTracker tracker = new PerformanceTracker();
+        MinHeapSort.sort(arr, tracker);
         int[] expected = {42};
-        assertArrayEquals(expected, arr, "Single-element array should remain unchanged");
+        assertArrayEquals(expected, arr);
     }
 
     @Test
     void testEmptyArray() {
         int[] arr = {};
-        MinHeapSort.sort(arr);
+        PerformanceTracker tracker = new PerformanceTracker();
+        MinHeapSort.sort(arr, tracker);
         int[] expected = {};
-        assertArrayEquals(expected, arr, "Empty array should remain unchanged");
+        assertArrayEquals(expected, arr);
     }
 
     @Test
     void testAllSameElements() {
         int[] arr = {7, 7, 7, 7};
-        MinHeapSort.sort(arr);
+        PerformanceTracker tracker = new PerformanceTracker();
+        MinHeapSort.sort(arr, tracker);
         int[] expected = {7, 7, 7, 7};
-        assertArrayEquals(expected, arr, "Array with all identical elements should remain unchanged");
+        assertArrayEquals(expected, arr);
     }
 
     @Test
     void testNullArray() {
-        assertThrows(NullPointerException.class, () -> {
-            MinHeapSort.sort(null);
-        }, "Null array should throw NullPointerException");
+        PerformanceTracker tracker = new PerformanceTracker();
+        assertThrows(NullPointerException.class, () -> MinHeapSort.sort(null, tracker));
     }
 }
